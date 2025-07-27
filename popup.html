@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Feed Filter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            width: 300px;
+            padding: 15px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+        button {
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            transform: translateY(-1px);
+        }
+        .btn-primary {
+            background-color: #6366f1;
+            color: white;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #4f46e5;
+        }
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            border: 1px solid #cbd5e0;
+        }
+        .btn-secondary:hover {
+            background-color: #cbd5e0;
+        }
+        .status-message {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            text-align: center;
+        }
+        .status-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .status-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        .status-info {
+            background-color: #e0f2fe;
+            color: #026aa2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-xl font-bold text-center text-gray-800 mb-2">YouTube Feed Filter</h1>
+
+        <div class="flex flex-col">
+            <label for="apiKey" class="mb-1">Gemini API Key:</label>
+            <input type="text" id="apiKey" placeholder="Enter your Gemini API Key" class="rounded-lg">
+        </div>
+
+        <div class="flex flex-col">
+            <label for="prompt" class="mb-1">Filtering Prompt:</label>
+            <textarea id="prompt" rows="4" placeholder="e.g., 'Show only videos about programming tutorials', 'Hide videos related to gaming news'" class="rounded-lg"></textarea>
+        </div>
+
+        <div class="flex justify-between gap-2 mt-2">
+            <button id="saveSettings" class="btn-secondary flex-1">Save Settings</button>
+            <button id="filterFeed" class="btn-primary flex-1">Filter Feed</button>
+        </div>
+
+        <div id="statusMessage" class="status-message hidden"></div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
